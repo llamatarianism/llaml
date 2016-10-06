@@ -1,0 +1,32 @@
+
+** Conflict (shift/reduce) in state 43.
+** Token involved: ARROW
+** This state is reached from main after reading:
+
+LET VAR EQ FUN VAR 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+main 
+nonempty_list(statement) EOF 
+statement 
+LET bindings 
+    loption(separated_nonempty_list(PIPE,binding)) 
+    separated_nonempty_list(PIPE,binding) 
+    binding 
+    VAR EQ expr 
+           func 
+           (?)
+
+** In state 43, looking ahead at ARROW, shifting is permitted
+** because of the following sub-derivation:
+
+FUN VAR . ARROW expr 
+
+** In state 43, looking ahead at ARROW, reducing production
+** nonempty_list(VAR) -> VAR 
+** is permitted because of the following sub-derivation:
+
+FUN nonempty_list(VAR) ARROW expr // lookahead token appears
+    VAR . 

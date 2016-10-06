@@ -1,0 +1,3 @@
+val times : Int -> Int -> Int
+let times x y = x * y
+let times = \x -> \y -> x * y

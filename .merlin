@@ -1,0 +1,5 @@
+PKG core
+PKG ppx_deriving
+PKG ppx_deriving.show
+
+B _build
